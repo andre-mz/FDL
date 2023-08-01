@@ -1,10 +1,6 @@
 <?php $this->load->view('_inc/head2')?>
 
 
-		
-	
-
-
    <div class="news  mt-5">
 		<div class="container">
 			<div class="row mt-5">
