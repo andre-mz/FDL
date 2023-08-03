@@ -43,6 +43,7 @@ class Retrieve_model extends CI_Model{
         $this->db->from($this->table_funcionario);
         if($id_funcionario != null){
             $this->db->where('id_funcionario', $id_funcionario);
+           
         }
         $query = $this->db->get();
         return $query;
@@ -82,7 +83,7 @@ class Retrieve_model extends CI_Model{
         return $this->db->count_all($this->table_user);
     }
     function count_func(){
-        return $this->db->count_all($this->table_funcionario);
+        return $this->db->where(['categoria'=>'funcionario'])->from($this->table_funcionario)->count_all_results();
     }
    
     

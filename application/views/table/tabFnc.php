@@ -1,18 +1,30 @@
 <?php $this->load->view('_inc/dashHead')?>
 
-
+    <style>
+        table{
+            font-size:13px!important;
+        }
+        table tr.tab-tr{
+            background: #00204A;
+            color:#fff;
+           
+        }
+        div.dep{
+            border-radius:unset!important;
+        }
+    </style>
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Tabelas</h1>
         <a href="<?=base_url()?>Url/addFnc" class="d-none d-sm-inline-block btn btn-sm shadow-sm">
             <i class="fas fa-download fa-sm text-white-50"></i> 
-            Cadastrar funcion&aacute;rio
+            CADASTRAR
         </a>
     </div>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4 dep">
-        <div class="row p-3">
+        <!--div class="row p-3">
             <ul class="nav" role="tablist">
                 <span>
                     <a class="link-dep nav-link active" href="<?=base_url('')?>" id="pills-home-tab" data-toggle="pill" role="tab" aria-controls="pills-home" aria-selected="true">
@@ -45,21 +57,21 @@
                     </a>
                 </span>
             </ul>
-        </div>
+        </div-->
         <div class="card-header py-3 dataTable-top">
-            <h6 class="m-0 text-primary text-center" style="font-size: 30px;text-transform: uppercase;font-weight: 200">funcionarios IPP <i class="fas fa-users-cog"></i></h6>
+            <h6 class="m-0 text-primary text-center" style="font-size: 30px;text-transform: uppercase;font-weight: 200">funcionarios | Colaboradores <i class="fas fa-users-cog"></i></h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered dataTables" width="100%" cellspacing="0">
+                <table class="table table-bordered dataTables form-lab" width="100%" cellspacing="0">
                     <thead>
-                        <tr>
-                            <th>ID Func.</th>
-                            <th>Foto</th>
+                        <tr class='tab-tr'>
+                            <th>ID</th>
                             <th>Nome</th>
                             <th>Departamento</th>
                             <th>Area de trabalho</th>
                             <th>Local</th>
+                            <th>Categoria</th>
                             <th>Contacto</th>
                             <?php if ($this->session->userdata('level') <= 2):?>
                                 <th>Ac&ccedil;&atilde;o</th>
@@ -70,13 +82,14 @@
                         <div class="tab-pane fade show active" id="allFNC" role="tabpanel" aria-labelledby="pills-home-tab">
                             <tbody>
                                 <?php foreach($retrieveFnc->result() as $key=>$retrieveFnc):?>   
-                                    <tr>
+                                    <tr class="form-lab">
                                         <td><?=$retrieveFnc->nr_funcionario?></td>
-                                        <td><img src="<?=base_url('uploa/foto_func/'.$retrieveFnc->foto)?>" alt="foto"></td>
+                                        <!--td><img src="<?=base_url('uploa/foto_func/'.$retrieveFnc->foto)?>" alt="foto"></td-->
                                         <td><?=$retrieveFnc->nome?></td>
                                         <td><?=$retrieveFnc->departament?></td>
                                         <td><?=$retrieveFnc->cargo?></td>
                                         <td><?=$retrieveFnc->local?></td>
+                                        <td><?=$retrieveFnc->categoria?></td>
                                         <td>(+258) <?=$retrieveFnc->contato_pessoal?></td>
                                         <?php if ($this->session->userdata('level') <= 2 ) :?>
                                             <td>
@@ -110,9 +123,6 @@
     </div>
 
     
-
-
-    sudo tcpdump -i eth0 -vn host 8.8.8.8 and port 53 &
 
 
 <?php $this->load->view('_inc/dashFooter')?>

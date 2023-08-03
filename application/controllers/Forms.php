@@ -143,19 +143,19 @@ class Forms extends CI_Controller{
         );
         
         if($this->form_validation->run()){
-            $orig_filename = $_FILES['foto_fnc']['name'];
-            $new_name      = time()."".str_replace(' ','-',$orig_filename);
-            $config        = [
+            //$orig_filename = $_FILES['foto_fnc']['name'];
+            //$new_name      = time()."".str_replace(' ','-',$orig_filename);
+            /*$config        = [
                 'upload_path'   => './upload/foto_func/',
                 'allowed_types' => 'gif|jpg|png|jpeg|Jpg|Jpeg|webp',
                 'file_name'     => $new_name
-            ];
-            $this->load->library('upload', $config);
-            if(!$this->upload->do_upload('foto_fnc')){
-                $foto_Error =  array('foto_Error' => $this->upload->display_errors());
-                $this->load->view('forms/addFnc', $foto_Error);
-            }else{
-                $foto_fncName = $this->upload->data('filename');
+            ];*/
+            //$this->load->library('upload', $config);
+            //if(!$this->upload->do_upload('foto_fnc')){
+                //$foto_Error =  array('foto_Error' => $this->upload->display_errors());
+                //$this->load->view('forms/addFnc', $foto_Error);
+            //}else{
+                //$foto_fncName = $this->upload->data('filename');
                 $data = [
                     'local_nascimento'     =>strip_tags($this->input->post('local_nascimento')),
                     'nome_pai'             =>strip_tags($this->input->post('nome_pai')),
@@ -163,9 +163,7 @@ class Forms extends CI_Controller{
                     'nome_conjugue'        =>strip_tags($this->input->post('nome_conjugue')),
                     'nivel_academico'      =>strip_tags($this->input->post('nivel_academico')),
                     'local_emissao'        =>strip_tags($this->input->post('local_emissao')),
-                    'salario'              =>strip_tags($this->input->post('salario')),
                     'estado_academico'     =>strip_tags($this->input->post('estado_academico')),
-                    'contato_emergencia_2' =>strip_tags($this->input->post('contato_emergencia_2')),
                     'nome'                 =>strip_tags($this->input->post('nome')),
                     'idade'                =>strip_tags($this->input->post('idade')),
                     'genero'               =>strip_tags($this->input->post('genero')),
@@ -184,7 +182,7 @@ class Forms extends CI_Controller{
                     'categoria'            =>strip_tags($this->input->post('categoria')),
                     'cidade_atual'         =>strip_tags($this->input->post('cidade_atual')),
                     'nr_funcionario'       =>strip_tags($this->input->post($nr_funcionario)),
-                    'foto'                 =>$foto_fncName
+                   // 'foto'                 =>$foto_fncName
                     //'estado'             =>strip_tags($estado),
                 ];
                 $post = $this->input->post(null, TRUE);
@@ -192,7 +190,7 @@ class Forms extends CI_Controller{
                 //$insert = $this->db->insert('table_funcionario',$data);
                 echo "<script>alert('FUNCIONARIO CADASTRADO COM SUCESSO');</script>";
                 echo "<script>window.location='".site_url('Url/addFnc')."';</script>";
-            }
+            
             
             
         }else{
